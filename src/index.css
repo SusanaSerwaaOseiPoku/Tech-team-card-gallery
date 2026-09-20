@@ -1,0 +1,222 @@
+:root {
+  --bg: #f3f6fb;
+  --panel: #ffffff;
+  --panel-strong: #eef3ff;
+  --text: #162033;
+  --muted: #677489;
+  --border: rgba(17, 24, 39, 0.08);
+  --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.08);
+  --shadow-strong: 0 18px 40px rgba(76, 114, 180, 0.17);
+  --accent: #4f6ef7;
+  --accent-2: #7c5cff;
+  --accent-soft: rgba(79, 110, 247, 0.12);
+  --success: #1ea97c;
+  --radius: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(124, 92, 255, 0.12), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(79, 110, 247, 0.10), transparent 20%),
+    var(--bg);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+button, a {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+.expanded-counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  margin-bottom: 26px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: rgba(79, 110, 247, 0.08);
+  border: 1px solid rgba(79, 110, 247, 0.16);
+  box-shadow: 0 8px 20px rgba(79, 110, 247, 0.06);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.profile-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px 18px;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-strong);
+  border-color: rgba(79, 110, 247, 0.16);
+}
+
+.profile-card:hover::before {
+  opacity: 1;
+}
+
+.profile-card.expanded {
+  border-color: rgba(79, 110, 247, 0.24);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+}
+
+.profile-card.expanded::before {
+  opacity: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.profile-card img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(79, 110, 247, 0.12);
+  box-shadow: 0 10px 20px rgba(79, 110, 247, 0.12);
+  flex-shrink: 0;
+}
+
+.profile-card h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.profile-card h3 {
+  margin: 4px 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.card-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    margin-top 0.25s ease;
+}
+
+.profile-card.expanded .card-details {
+  max-height: 220px;
+  opacity: 1;
+  margin-top: 16px;
+}
+
+.card-details p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 0.96rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 14px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.github-link:hover {
+  background: rgba(79, 110, 247, 0.16);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .app-shell {
+    padding-top: 28px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    padding: 18px 16px 16px;
+  }
+
+  .card-header {
+    gap: 12px;
+  }
+
+  .profile-card img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .profile-card h2 {
+    font-size: 1.2rem;
+  }
+}
