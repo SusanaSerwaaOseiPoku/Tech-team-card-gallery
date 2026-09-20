@@ -5,53 +5,59 @@
 //• Clicking a card toggles an "expanded" state on that card, revealing extra details (bio, GitHub link).
 //• Add a counter at the top of the page showing how many cards are currently expanded.
 
+import { useState } from 'react'
+import './App.css'
+import cynthie from './assets/download (73).jpg'
+import kayden from './assets/Kayden.jpg'
+import mark from './assets/Mark.jpg'
+import carol from './assets/download (75).jpg'
+import peter from './assets/70720656643796861.jpg'
+import sean from './assets/492581278018222007.jpg'
+
 const card = [
   {
     name: 'Cynthie',
     role: 'Web Developer',
-    photoUrl: 'src/assets/download (73).jpg',
+    photoUrl: cynthie,
     bio: 'Cynthie is a passionate web developer with a love for creating intuitive user experiences.',
-    github:"https://github.com/cynthie"
+    github: 'https://github.com/cynthie'
   },
   {
     name: 'Kayden',
     role: 'Scientist',
-    photoUrl: 'src/assets/Kayden.jpg',
+    photoUrl: kayden,
     bio: 'Kayden is a dedicated scientist with a focus on innovative research and development.',
-    github:"https://github.com/kayden"
+    github: 'https://github.com/kayden'
   },
   {
     name: 'Mark',
     role: 'AI Prompt Engineer',
-    photoUrl: 'src/assets/Mark.jpg',
+    photoUrl: mark,
     bio: 'Mark is a skilled AI prompt engineer with expertise in creating effective prompts for various applications.',
-    github:"https://github.com/mark"
+    github: 'https://github.com/mark'
   },
   {
     name: 'Carol',
     role: 'Fashion Star',
-    photoUrl: 'src\\assets\\Click clack click clack.jpg',
+    photoUrl: carol,
     bio: 'Carol is a talented fashion designer with a keen eye for detail and a passion for creating stunning outfits.',
-    github:"https://github.com/carol"
+    github: 'https://github.com/carol'
   },
   {
     name: 'Peter',
     role: 'Web Designer',
-    photoUrl: 'src\\assets\\70720656643796861.jpg',
+    photoUrl: peter,
     bio: 'Peter is a creative web designer with a keen eye for aesthetics and a passion for crafting beautiful user interfaces.',
-    github:"https://github.com/peter"
+    github: 'https://github.com/peter'
   },
   {
     name: 'Sean',
     role: 'Stylist',
-    photoUrl: 'src\\assets\\492581278018222007.jpg',
+    photoUrl: sean,
     bio: 'Sean is a professional stylist with a talent for helping people find their perfect look and feel confident in their clothing.',
-    github:"https://github.com/sean"
+    github: 'https://github.com/sean'
   },
 ]
-
-import { useState } from 'react'
-import './App.css'
 
 function ProfileCard({ card, onCardClick, expanded }) {
   return (
